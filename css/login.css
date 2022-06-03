@@ -1,0 +1,13 @@
+.form-control,
+.textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.textarea {
+  resize: none;
+}
+.form-control,
+.btn-login,
+.textarea {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
