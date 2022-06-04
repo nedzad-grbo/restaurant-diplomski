@@ -37,7 +37,7 @@ session_start();
 </head>
 <!-- body -->
 
-<body class="main-layout Recipes_page">
+<body class="main-layout Contact_page">
   <!-- loader  -->
   <div class="loader_bg">
     <div class="loader"><img src="images/loading.gif" alt="" /></div>
@@ -60,13 +60,13 @@ session_start();
           <li>
             <a href="about.php">About</a>
           </li>
-          <li class="active">
+          <li>
             <a href="recipe.php">Recipe</a>
           </li>
           <li>
             <a href="reservation.php">Reservation</a>
           </li>
-          <li>
+          <li class="active">
             <a href="contact.php">Contact Us</a>
           </li>
         </ul>
@@ -196,69 +196,6 @@ session_start();
         </div>
       </div>
       <!-- end header -->
-
-      <div class="yellow_bg">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title">
-                <h2>Our Recipes</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- section -->
-      <section class="resip_section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="ourheading">
-                <h2>Our Recipes</h2>
-              </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="owl-carousel owl-theme">
-                    <?php
-
-                    require './php/connect.php';
-
-                    $sql = "SELECT * FROM menu";
-                    $result = $dbc->query($sql);
-
-                    $count = $result->num_rows;
-
-                    if ($count > 0) {
-                      while ($row = $result->fetch_assoc()) {
-                        echo '
-                          <div class="item">
-                            <div class="product_blog_img">
-                              <img src=" data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row['name'] . '" />
-                            </div>
-                            <div class="product_blog_cont">
-                              <h3>' . $row['name'] . '</h3>
-                              <p>' . $row['description'] . '</p>
-                              <h4><span class="theme_color">$</span>' . $row['price'] . '</h4>
-                            </div>
-                          </div>
-                        ';
-                      }
-                      echo '</div>';
-                    } else {
-                      echo " 0 results";
-                    }
-                    $dbc->close();
-                    ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- footer -->
       <fooetr>
         <div class="footer">
@@ -304,9 +241,11 @@ session_start();
                 <ul class="lik">
                   <li><a href="index.php">Home</a></li>
                   <li><a href="about.php">About</a></li>
-                  <li class="active"><a href="recipe.php">Recipe</a></li>
+                  <li><a href="recipe.php">Recipe</a></li>
                   <li><a href="reservation.php">Reservation</a></li>
-                  <li><a href="contact.php">Contact us</a></li>
+                  <li class="active">
+                    <a href="contact.php">Contact us</a>
+                  </li>
                 </ul>
               </div>
               <div class="col-md-12">
@@ -332,6 +271,7 @@ session_start();
   </div>
   <div class="overlay"></div>
   <!-- Javascript files-->
+
   <script src="js/jquery.min.js"></script>
   <script src="./js/newsletter.js"></script>
 
@@ -342,7 +282,6 @@ session_start();
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
   <script src="js/jquery-3.0.0.min.js"></script>
-
   <script src="./js/toastr.js"></script>
 
   <script type="text/javascript">
@@ -364,33 +303,11 @@ session_start();
       });
     });
   </script>
-
-  <script>
-    $(document).ready(function() {
-      var owl = $(".owl-carousel");
-      owl.owlCarousel({
-        margin: 10,
-        nav: true,
-        loop: true,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 5,
-          },
-        },
-      });
-    });
-  </script>
-
   <script src="./js/login.js"></script>
   <script src="./js/register.js"></script>
 
   <script src="./js/contact.js"></script>
+
 </body>
 
 </html>

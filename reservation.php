@@ -37,7 +37,7 @@ session_start();
 </head>
 <!-- body -->
 
-<body class="main-layout Recipes_page">
+<body class="main-layout blog_page">
   <!-- loader  -->
   <div class="loader_bg">
     <div class="loader"><img src="images/loading.gif" alt="" /></div>
@@ -60,10 +60,10 @@ session_start();
           <li>
             <a href="about.php">About</a>
           </li>
-          <li class="active">
+          <li>
             <a href="recipe.php">Recipe</a>
           </li>
-          <li>
+          <li class="active">
             <a href="reservation.php">Reservation</a>
           </li>
           <li>
@@ -196,68 +196,89 @@ session_start();
         </div>
       </div>
       <!-- end header -->
-
       <div class="yellow_bg">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="title">
-                <h2>Our Recipes</h2>
+                <h2>Our Blog</h2>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- section -->
-      <section class="resip_section">
+
+      <!-- blog -->
+      <div class="blog">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <div class="ourheading">
-                <h2>Our Recipes</h2>
+              <div class="title">
+                <i><img src="images/title.png" alt="#" /></i>
+
+                <span>when looking at its layout. The point of using Lorem</span>
               </div>
             </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="owl-carousel owl-theme">
-                    <?php
-
-                    require './php/connect.php';
-
-                    $sql = "SELECT * FROM menu";
-                    $result = $dbc->query($sql);
-
-                    $count = $result->num_rows;
-
-                    if ($count > 0) {
-                      while ($row = $result->fetch_assoc()) {
-                        echo '
-                          <div class="item">
-                            <div class="product_blog_img">
-                              <img src=" data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row['name'] . '" />
-                            </div>
-                            <div class="product_blog_cont">
-                              <h3>' . $row['name'] . '</h3>
-                              <p>' . $row['description'] . '</p>
-                              <h4><span class="theme_color">$</span>' . $row['price'] . '</h4>
-                            </div>
-                          </div>
-                        ';
-                      }
-                      echo '</div>';
-                    } else {
-                      echo " 0 results";
-                    }
-                    $dbc->close();
-                    ?>
-                  </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+              <div class="blog_box">
+                <div class="blog_img_box">
+                  <figure>
+                    <img src="images/blog_img1.png" alt="#" />
+                    <span>02 FEB 2019</span>
+                  </figure>
                 </div>
+                <h3>Spicy Barger</h3>
+                <p>
+                  The standard chunk of Lorem Ipsum used since the 1500s is
+                  reproduced below for those interested. Sections 1.10.32 and
+                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                  also reproduced in their exact original form, accompanied by
+                  English versions from the
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+              <div class="blog_box">
+                <div class="blog_img_box">
+                  <figure>
+                    <img src="images/blog_img2.png" alt="#" />
+                    <span>02 FEB 2019</span>
+                  </figure>
+                </div>
+                <h3>Egg & Tosh</h3>
+                <p>
+                  The standard chunk of Lorem Ipsum used since the 1500s is
+                  reproduced below for those interested. Sections 1.10.32 and
+                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                  also reproduced in their exact original form, accompanied by
+                  English versions from the
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+              <div class="blog_box">
+                <div class="blog_img_box">
+                  <figure>
+                    <img src="images/blog_img3.png" alt="#" />
+                    <span>02 FEB 2019</span>
+                  </figure>
+                </div>
+                <h3>Pizza</h3>
+                <p>
+                  The standard chunk of Lorem Ipsum used since the 1500s is
+                  reproduced below for those interested. Sections 1.10.32 and
+                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                  also reproduced in their exact original form, accompanied by
+                  English versions from the
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <!-- end blog -->
 
       <!-- footer -->
       <fooetr>
@@ -304,8 +325,10 @@ session_start();
                 <ul class="lik">
                   <li><a href="index.php">Home</a></li>
                   <li><a href="about.php">About</a></li>
-                  <li class="active"><a href="recipe.php">Recipe</a></li>
-                  <li><a href="reservation.php">Reservation</a></li>
+                  <li><a href="recipe.php">Recipe</a></li>
+                  <li class="active">
+                    <a href="reservation.php">Reservation</a>
+                  </li>
                   <li><a href="contact.php">Contact us</a></li>
                 </ul>
               </div>
@@ -314,7 +337,7 @@ session_start();
                   <h3>Newsletter</h3>
                   <form class="newtetter">
                     <input class="tetter" placeholder="Your email" type="text" name="Your email" id="userEmail" />
-                    <button type="button" id="newsBtn" class="submit">Subscribe</button>
+                    <button type="button" class="submit" id="newsBtn">Subscribe</button>
                   </form>
                 </div>
               </div>
@@ -342,7 +365,6 @@ session_start();
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
   <script src="js/jquery-3.0.0.min.js"></script>
-
   <script src="./js/toastr.js"></script>
 
   <script type="text/javascript">
@@ -365,32 +387,11 @@ session_start();
     });
   </script>
 
-  <script>
-    $(document).ready(function() {
-      var owl = $(".owl-carousel");
-      owl.owlCarousel({
-        margin: 10,
-        nav: true,
-        loop: true,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 5,
-          },
-        },
-      });
-    });
-  </script>
-
   <script src="./js/login.js"></script>
   <script src="./js/register.js"></script>
 
   <script src="./js/contact.js"></script>
+
 </body>
 
 </html>

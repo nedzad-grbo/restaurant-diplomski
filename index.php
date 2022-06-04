@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +58,7 @@
             <a href="index.php">Home</a>
           </li>
           <li>
-            <a href="about.html">About</a>
+            <a href="about.php">About</a>
           </li>
           <li>
             <a href="recipe.php">Recipe</a>
@@ -64,7 +67,7 @@
             <a href="reservarion.html">Reservation</a>
           </li>
           <li>
-            <a href="contact.html">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -427,10 +430,10 @@
               <div class="col-md-12">
                 <ul class="lik">
                   <li class="active"><a href="index.php">Home</a></li>
-                  <li><a href="about.html">About</a></li>
+                  <li><a href="about.php">About</a></li>
                   <li><a href="recipe.php">Recipe</a></li>
-                  <li><a href="reservation.html">Reservation</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
+                  <li><a href="reservation.php">Reservation</a></li>
+                  <li><a href="contact.php">Contact us</a></li>
                 </ul>
               </div>
               <div class="col-md-12">
