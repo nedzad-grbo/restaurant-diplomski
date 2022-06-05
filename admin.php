@@ -28,6 +28,11 @@ session_start();
 
 <body>
   <h1 class='text-center text-primary'>Menu</h1>
+  <div class="col-12 text-center">
+    <a href="addNew.php">
+      <button class="btn btn-primary my-3">Add NEW</button>
+    </a>
+  </div>
   <?php
   if (isset($_SESSION['email'])) {
     require './php/connect.php';
@@ -39,7 +44,10 @@ session_start();
     if ($count > 0) {
       echo '<table class="table"> <thead> <tr> <th scope="col"> Name </th> <th scope="col"> Description </th> <th scope="col"> Image </th> <th scope="col"> Price </th> <th scope="col"> Actions </th> </thead> <tbody>';
       while ($row = $result->fetch_assoc()) {
-        echo '<tr> <td>' . $row['name'] . '</td> <td>' . $row['description'] . '</td> <td> <img src=" data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row['name'] . '" width="100px" height="100px" /> </td> <td>' . $row['price'] . '$</td> <td> <button class="btn btn-primary">Edit</button> <button class="btn btn-danger">Delete</button> </td>  </tr>';
+        echo '
+        <tr> 
+ <form action = "php/deleteRecipe.php?idnum=' . $row["ID"] . '" method = "POST"> <input type="text" value="' . $row["ID"] . '"  name="idnum' . $row["ID"] . '" id="' . $row["ID"] . '" hidden >
+         <td>' . $row['name'] . '</td> <td>' . $row['description'] . '</td> <td> <img src="' . $row['image'] . '" alt="' . $row['name'] . '" height="150" width="150"/> </td> <td>' . $row['price'] . '$</td> <td>' . /* <button type="button" class="btn btn-primary">Edit</button> */ ' <button class="btn btn-danger" type="submit" >Delete</button> </td> </form> </tr>';
       }
       echo '</tbody> </table>';
     } else {

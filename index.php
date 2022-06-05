@@ -326,7 +326,7 @@ session_start();
                         echo '
                     <div class="item">
                       <div class="product_blog_img">
-                        <img src=" data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row['name'] . '" />
+                        <img class="recipe-img" src="' . $row['image'] . '" alt="' . $row['name'] . '" height="150" width="150"/>
                       </div>
                       <div class="product_blog_cont">
                         <h3>' . $row['name'] . '</h3>
