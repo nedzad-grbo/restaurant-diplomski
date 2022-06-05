@@ -964,3 +964,7 @@ a.article:hover {
   height: 200px;
   width: 100%;
 }
+
+#total_price:hover {
+  cursor: not-allowed;
+}
