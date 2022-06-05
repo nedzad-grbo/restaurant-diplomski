@@ -34,7 +34,9 @@ function admin_login() {
       success: function (data) {
         if (data.indexOf("success") > -1) {
           toastr.success("You have successfully logged in");
-          window.location.href = "./admin.php";
+          setTimeout(function () {
+            window.location.href = "./admin.php";
+          }, 1500);
         } else {
           toastr.error("Invalid email or password");
         }

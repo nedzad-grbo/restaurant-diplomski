@@ -37,7 +37,9 @@ function addNew() {
       success: function (data) {
         if (data.indexOf("add") > -1) {
           toastr.success(" Added Successfully");
-          window.location.href = "./admin.php";
+          setTimeout(function () {
+            window.location.href = "./admin.php";
+          }, 1500);
         } else {
           toastr.error("Error");
         }
