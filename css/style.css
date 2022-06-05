@@ -959,3 +959,8 @@ a.article:hover {
   color: #fff;
   font-weight: 500;
 }
+
+.recipe-img {
+  height: 200px;
+  width: 100%;
+}
