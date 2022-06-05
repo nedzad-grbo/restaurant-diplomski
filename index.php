@@ -225,7 +225,10 @@ session_start();
                               be distracted by the readable content of a page
                               when looking at its layout.
                             </p>
-                            <a class="main_bt_border" href="#">Order Now</a>
+                            <?php
+                            if (isset($_SESSION['email'])) {
+                              echo '<a class="main_bt_border" href="reservation.php">Order Now</a>';
+                            } ?>
                           </div>
                         </div>
                         <div class="col-md-7">
@@ -247,7 +250,10 @@ session_start();
                               be distracted by the readable content of a page
                               when looking at its layout.
                             </p>
-                            <a class="main_bt_border" href="#">Order Now</a>
+                            <?php
+                            if (isset($_SESSION['email'])) {
+                              echo '<a class="main_bt_border" href="reservation.php">Order Now</a>';
+                            } ?>
                           </div>
                         </div>
                         <div class="col-md-7 full text_align_center">
@@ -347,6 +353,17 @@ session_start();
               </div>
             </div>
           </div>
+          <?php
+          if (isset($_SESSION['email'])) {
+            echo '<div class="row mt-5">
+            <div class="col-12 text-center">
+              <a href="reservation.php">
+                <button class="btn btn-primary">RESERVE</button>
+              </a>
+            </div>
+          </div>';
+          }
+          ?>
         </div>
       </section>
       <div class="bg_bg">

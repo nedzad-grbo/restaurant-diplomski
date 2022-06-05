@@ -208,7 +208,7 @@ session_start();
           <div class="row">
             <div class="col-md-12">
               <div class="title">
-                <h2>Our Blog</h2>
+                <h2>RESERVATION</h2>
               </div>
             </div>
           </div>
@@ -228,59 +228,51 @@ session_start();
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
-              <div class="blog_box">
-                <div class="blog_img_box">
-                  <figure>
-                    <img src="images/blog_img1.png" alt="#" />
-                    <span>02 FEB 2019</span>
-                  </figure>
-                </div>
-                <h3>Spicy Barger</h3>
-                <p>
-                  The standard chunk of Lorem Ipsum used since the 1500s is
-                  reproduced below for those interested. Sections 1.10.32 and
-                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                  also reproduced in their exact original form, accompanied by
-                  English versions from the
-                </p>
+            <?php
+            if (isset($_SESSION['email'])) {
+              echo '<input type="hidden" name="user" id="user" value="' . $_SESSION['email'] . '">';
+            }
+            ?>
+            <div class="col-12">
+              <label>Foods</label>
+              <select name="food" id="food" class="custom-select custom-select-lg mb-3">
+                <option value="" disabled>Select food</option>
+                <option value="hamburger">hamburger</option>
+                <option value="pizza">pizza</option>
+                <option value="pasta">pasta</option>
+                <option value="pita">Pita</option>
+                <option value="cevapi">cevapi</option>
+              </select>
+              <input type="number" class="form-control" id="foodQuantity" placeholder="Food Quantity...">
+            </div>
+            <div class="col-12">
+              <label>Drinks</label>
+              <select name="drink" id="drink" class="custom-select custom-select-lg mb-3">
+                <option value="" disabled>Select drink</option>
+                <option value="cola">Cola</option>
+                <option value="pepsi">Pepsi</option>
+                <option value="water">Water</option>
+                <option value="sprite">Sprite</option>
+                <option value="jogurt">Jogurt</option>
+              </select>
+              <input type="number" class="form-control" id="drinkQuantity" placeholder="Drink Quantity...">
+
+            </div>
+            <div class="col-12">
+              <label>Options:</label>
+              <br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="delivery" value="delivery">
+                <label class="form-check-label" for="delivery">Delivery</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="pickup" value="pickup">
+                <label class="form-check-label" for="pickup">Pickup</label>
               </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
-              <div class="blog_box">
-                <div class="blog_img_box">
-                  <figure>
-                    <img src="images/blog_img2.png" alt="#" />
-                    <span>02 FEB 2019</span>
-                  </figure>
-                </div>
-                <h3>Egg & Tosh</h3>
-                <p>
-                  The standard chunk of Lorem Ipsum used since the 1500s is
-                  reproduced below for those interested. Sections 1.10.32 and
-                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                  also reproduced in their exact original form, accompanied by
-                  English versions from the
-                </p>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <div class="blog_box">
-                <div class="blog_img_box">
-                  <figure>
-                    <img src="images/blog_img3.png" alt="#" />
-                    <span>02 FEB 2019</span>
-                  </figure>
-                </div>
-                <h3>Pizza</h3>
-                <p>
-                  The standard chunk of Lorem Ipsum used since the 1500s is
-                  reproduced below for those interested. Sections 1.10.32 and
-                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                  also reproduced in their exact original form, accompanied by
-                  English versions from the
-                </p>
-              </div>
+            <div class="col-12 mt-5">
+              <input type="text" class="form-control" id="total_price" name="total_price" placeholder="Total Price" readonly>
+              <button type="button" class="btn btn-primary" onclick="reserve()">Reserve</button>
             </div>
           </div>
         </div>
@@ -398,6 +390,7 @@ session_start();
   <script src="./js/register.js"></script>
 
   <script src="./js/contact.js"></script>
+  <script src="./js/reservation.js"></script>
 
 </body>
 

@@ -242,7 +242,7 @@ session_start();
                         echo '
                           <div class="item">
                             <div class="product_blog_img">
-                              <img src=" data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row['name'] . '" />
+                              <img class="recipe-img" src="' . $row['image'] . '" alt="' . $row['name'] . '" height="150" width="150"/>
                             </div>
                             <div class="product_blog_cont">
                               <h3>' . $row['name'] . '</h3>
@@ -263,6 +263,17 @@ session_start();
               </div>
             </div>
           </div>
+          <?php
+          if (isset($_SESSION['email'])) {
+            echo '<div class="row mt-5">
+            <div class="col-12 text-center">
+              <a href="reservation.php">
+                <button class="btn btn-primary">RESERVE</button>
+              </a>
+            </div>
+          </div>';
+          }
+          ?>
         </div>
       </section>
 
