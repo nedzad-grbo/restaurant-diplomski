@@ -103,8 +103,15 @@ session_start();
                           " src="images/location_icon.png" alt="#" /><a href="#">Francuske Revolucije bb</a>
                     </li>
                     <li class="button_user">
-                      <button type="button" class="button active" data-toggle="modal" data-target="#loginModal">Login</button>
-                      <button type="button" class="button" data-toggle="modal" data-target="#registerModal">Register</button>
+                      <?php
+                      if (isset($_SESSION['email'])) {
+                        echo '<a href="logout.php">Logout</a>';
+                      } else {
+                        echo '<button type="button" class="button active" data-toggle="modal" data-target="#loginModal">Login</button>
+                      <button type="button" class="button" data-toggle="modal" data-target="#registerModal">Register</button>';
+                      }
+
+                      ?>
                     </li>
                     <li>
                       <button type="button" id="sidebarCollapse">
