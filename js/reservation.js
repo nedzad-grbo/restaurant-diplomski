@@ -9,17 +9,17 @@ toastr.options.preventDuplicates = true;
 toastr.options.closeButton = true;
 toastr.options.progressBar = true;
 
-function reserve() {
-  let food = $("#food").val();
-  let foodQuantity = parseFloat($("#foodQuantity").val());
-  let drink = $("#drink").val();
-  let drinkQuantity = parseFloat($("#drinkQuantity").val());
-  let type = $("input[name='type']:checked").val();
-  let total = 0;
-  let foodTotal = 0;
-  let drinkTotal = 0;
+function calculate() {
+  var food = $("#food").val();
+  var foodQuantity = parseFloat($("#foodQuantity").val());
+  var drink = $("#drink").val();
+  var drinkQuantity = parseFloat($("#drinkQuantity").val());
+  var type = $("input[name='type']:checked").val();
+  var total = 0;
+  var foodTotal = 0;
+  var drinkTotal = 0;
 
-  let user = $("#user").val();
+  var user = $("#user").val();
 
   if (food == undefined || food == null || food == "") {
     toastr.error("Please select food");
@@ -75,35 +75,37 @@ function reserve() {
     total = foodTotal + drinkTotal;
     $("#total_price").val(parseFloat(total));
 
-    $.ajax({
-      url:
-        "./php/reserve.php?task=reserve&food=" +
-        food +
-        "&foodQuantity=" +
-        foodQuantity +
-        "&drink=" +
-        drink +
-        "&drinkQuantity=" +
-        drinkQuantity +
-        "&type=" +
-        type +
-        "&total=" +
-        total +
-        "&user=" +
-        user,
-      success: function (data) {
-        if (data.indexOf("success") > -1) {
-          toastr.success(" Reservation added successfully");
-          setTimeout(function () {
-            window.location.href = "./index.php";
-          }, 1500);
-        } else {
-          toastr.error("Error");
-        }
-      },
-      error: function (data, err) {
-        toastr.error("An error occurred, please try again later");
-      },
-    });
+    if (confirm("Price: " + total + " \nAre you sure you want to reserve?")) {
+      $.ajax({
+        url:
+          "./php/reserve.php?task=reserve&food=" +
+          food +
+          "&foodQuantity=" +
+          foodQuantity +
+          "&drink=" +
+          drink +
+          "&drinkQuantity=" +
+          drinkQuantity +
+          "&type=" +
+          type +
+          "&total=" +
+          total +
+          "&user=" +
+          user,
+        success: function (data) {
+          if (data.indexOf("success") > -1) {
+            toastr.success(" Reservation added successfully");
+            setTimeout(function () {
+              window.location.href = "./index.php";
+            }, 1500);
+          } else {
+            toastr.error("Error");
+          }
+        },
+        error: function (data, err) {
+          toastr.error("An error occurred, please try again later");
+        },
+      });
+    }
   }
 }
