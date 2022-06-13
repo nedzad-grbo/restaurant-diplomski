@@ -27,15 +27,19 @@ session_start();
 </head>
 
 <body>
-  <h1 class='text-center text-primary'>Menu</h1>
+  <?php
+  if (isset($_SESSION['email']) && $_SESSION['email'] == 'admin@gmail.com') {
+    require './php/connect.php';
+    echo '<div class="text-right px-3">
+    <a href="logout.php" class="btn btn-warning my-3">Logout</a>
+  </div>
+<h1 class="text-center text-primary
+  ">Menu</h1>
   <div class="col-12 text-center">
     <a href="addNew.php">
       <button class="btn btn-primary my-3">Add NEW</button>
     </a>
-  </div>
-  <?php
-  if (isset($_SESSION['email'])) {
-    require './php/connect.php';
+  </div>';
 
     $sql = "SELECT * FROM menu";
     $result = $dbc->query($sql);
@@ -50,6 +54,22 @@ session_start();
          <td>' . $row['name'] . '</td> <td>' . $row['description'] . '</td> <td> <img src="' . $row['image'] . '" alt="' . $row['name'] . '" height="150" width="150"/> </td> <td>' . $row['price'] . '$</td> <td>' . /* <button type="button" class="btn btn-primary">Edit</button> */ ' <button class="btn btn-danger" type="submit" >Delete</button> </td> </form> </tr>';
       }
       echo '</tbody> </table>';
+
+      echo "  <h1 class='text-center text-primary'>Reservations</h1>";
+
+      $sql = "SELECT * FROM reservation";
+      $result = $dbc->query($sql);
+
+      $count = $result->num_rows;
+      if ($count > 0) {
+        echo "<div class='text-center'>" .   $count . " reservations";
+        echo '<table class="table"> <thead> <tr> <th scope="col"> User </th> <th scope="col"> Food </th> <th scope="col"> Quantity </th> <th scope="col"> Drink </th> <th scope="col"> Quantity </th> <th scope="col"> Type </th> <th scope="col"> Price </th> </thead> <tbody>';
+        while ($row = $result->fetch_assoc()) {
+          echo '<tr> <td>' . $row["user"] . '</td> <td>' . $row["food"] . '</td> <td>' . $row["foodQuantity"] . '</td> <td>' . $row["drink"] . '</td> <td>' . $row["drinkQuantity"] . '</td> <td>' . $row["type"] . '</td> <td>' . $row["total"] . '$</td> </tr>';
+        }
+      } else {
+        echo '<h1 class="text-center text-primary">No Reservations</h1>';
+      }
     } else {
       echo '<p>No results</p>';
     }
@@ -59,7 +79,6 @@ session_start();
   }
   ?>
 
-  <h1 class='text-center text-primary'>Reservations</h1>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

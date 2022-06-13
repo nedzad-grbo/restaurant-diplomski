@@ -255,7 +255,7 @@ session_start();
                 <option value="sprite">Sprite</option>
                 <option value="jogurt">Jogurt</option>
               </select>
-              <input type="number" class="form-control" id="drinkQuantity" placeholder="Drink Quantity...">
+              <input type="number" class="form-control" id="drinkQuantity" placeholder="Drink Quantity..." onchange="calculate()">
 
             </div>
             <div class="col-12">
@@ -272,7 +272,7 @@ session_start();
             </div>
             <div class="col-12 mt-5">
               <input type="text" class="form-control" id="total_price" name="total_price" placeholder="Total Price" readonly>
-              <button type="button" class="btn btn-primary" onclick="reserve()">Reserve</button>
+              <button type="button" class="btn btn-primary" onclick="calculate()">Reserve</button>
             </div>
           </div>
         </div>
